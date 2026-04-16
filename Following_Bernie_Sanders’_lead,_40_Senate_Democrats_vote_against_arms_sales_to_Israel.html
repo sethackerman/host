@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en-US" data-mode="sepia"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <base target="_blank">
+  <style type="text/css" id="ftp">html[data-mode="light"] {
+    color-scheme: light;
+    --fg: #222;
+    --bd: #222;
+    --bg: whitesmoke;
+  }
+  html[data-mode="dark"] {
+    color-scheme: dark;
+    --fg: #eee;
+    --bd: #eee;
+    --bg: #333;
+  }
+  html[data-mode="sepia"] {
+    color-scheme: light;
+    --fg: #5b4636;
+    --bd: #5b4636;
+    --bg: #f4ecd8;
+  }
+  html[data-mode="solarized-light"] {
+    color-scheme: light;
+    --fg: #586e75;
+    --bd: #586e75;
+    --bg: #fdf6e3;
+  }
+  html[data-mode="nord-light"] {
+    color-scheme: light;
+    --fg: #2e3440;
+    --bd: #2e3440;
+    --bg: #e5e9f0;
+  }
+  html[data-mode="groove-dark"] {
+    color-scheme: dark;
+    --fg: #cec4ac;
+    --bd: #cec4ac;
+    --bg: #282828
+  }
+  html[data-mode="solarized-dark"] {
+    color-scheme: dark;
+    --fg: #839496;
+    --bd: #839496;
+    --bg: #002b36;
+  }
+  html[data-mode="nord-dark"] {
+    color-scheme: dark;
+    --fg: #e5e9f0;
+    --bd: #e5e9f0;
+    --bg: #2e3440;
+  }</style>
+  <style>
+    /* latin */
+    @font-face {
+      font-family: 'Comic Neue';
+      font-style: normal;
+      font-weight: 400;
+      src: url(fonts/4UaHrEJDsxBrF37olUeD96rp57F2IwM.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'Lexend Deca';
+      font-style: normal;
+      font-weight: 400;
+      src: url(fonts/K2FifZFYk-dHSE0UPPuwQ7CrD94i-NCKm-U48M1wqxnDirZPl3v-.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 400;
+      src: url(fonts/pxiEyp8kv8JHgFVrJJfecnFHGPc.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    :root {
+      --fg: #000; /* foreground  */
+      --bg: #fff; /* background  */
+      --bd: #000; /* border  */
+      --lk: #006fa5; /* link */
+      --lkv: #d33bf0; /* link visited */
+      --hg: #ffff81; /* highlight  */
+    }
+    html {
+      overflow: overlay;
+      scrollbar-color: var(--fg) var(--bg);
+    }
+    html[data-mode$="dark"] {
+      --lk: #0096de;
+    }
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      margin: 30px auto 0 auto;
+      padding: 10px;
+      position: relative;
+
+      color: var(--fg);
+      border-color: var(--bd);
+      background-color: var(--bg);
+    }
+
+
+    @media print {
+      html[data-mode] {
+        --fg: #000;
+        --bd: #000;
+        --bg: #fff;
+
+        width: unset;
+        padding: 0;
+        margin: 0;
+      }
+    }
+    iframe,
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    img:not([width])[src$=".svg"] {
+      max-width: 100px;
+    }
+    body[data-images=false] canvas,
+    body[data-images=false] svg,
+    body[data-images=false] img {
+      display: none;
+    }
+    svg:not([width]):not([height]) {
+      max-width: 25vmin;
+    }
+    a {
+      color: var(--lk);
+      text-decoration: none;
+    }
+    a:visited {
+      color: var(--lkv);
+    }
+
+    hr {
+      background-color: var(--bd);
+      height: 1px;
+      border: 0;
+    }
+    #reader-domain {
+      display: inline-flex;
+      align-items: anchor-center;
+      gap: 5px;
+      font-family: Helvetica, Arial, sans-serif;
+      text-decoration: none;
+      border-bottom-color: currentcolor;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+      direction: ltr;
+    }
+    #reader-domain > span:nth-of-type(1) {
+      font-size: 1.1em;
+    }
+    #reader-domain > span:nth-of-type(2) {
+      font-size: 0.8em;
+    }
+    #reader-domain[data-mode="compact"] > span:nth-of-type(3) {
+      display: none
+    }
+    #reader-domain:not([data-mode="compact"]) > span:nth-of-type(1),
+    #reader-domain:not([data-mode="compact"]) > span:nth-of-type(2) {
+      display: none;
+    }
+
+    #reader-title {
+      font-size: 1.6em;
+      line-height: 1.25em;
+      width: 100%;
+      margin: 20px 0;
+      padding: 0;
+    }
+    #reader-credits,
+    #doi,
+    #published-time,
+    #reader-estimated-time {
+      font-size: 0.85em;
+      line-height: 1.48em;
+      margin: 0 0 10px 0;
+      padding: 0;
+    }
+    #reader-credits:not(:empty)::after {
+      content: ' ⋮ ';
+    }
+    #published-time:not(:empty)::before {
+      content: ' ⋮ ';
+    }
+    #doi-json {
+      overflow: hidden;
+    }
+    #doi-json code {
+      overflow: auto;
+      max-height: 400px;
+    }
+    #published-time:empty,
+    #reader-credits:empty {
+      display: none;
+    }
+    mark.hghlght {
+      background-color: var(--hg);
+    }
+    body:not([data-columns="1"]) .page :is(h1, h2) {
+      column-span: all;
+      background-color: rgba(125, 125, 125, 0.1);
+      padding: 10px;
+    }
+    .hidden {
+      display: none;
+    }
+    .page-separator {
+      background-color: rgba(125, 125, 125, 0.1);
+      padding-block: 2ch;
+      text-align: center;
+      font-size: medium;
+    }
+  </style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+  overflow: hidden;
+}
+blockquote {
+  padding: 0;
+  padding-inline-start: 2ch;
+  border-inline-start: 2px solid var(--bd);
+}
+aside {
+  color: color-mix(in srgb, var(--fg), var(--bg) 20%);
+}
+body[data-mode="dark"] pre code {
+  background-color: #eff0f1;
+  color: #393318;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+html[data-mode=sepia] body {}
+/* CSS for "light" theme */
+html[data-mode=light] body {}
+/* CSS for "dark" theme */
+html[data-mode=dark] body {}</style>
+<title>Following Bernie Sanders’ lead, 40 Senate Democrats vote against arms sales to Israel</title><title>Following Bernie Sanders’ lead, 40 Senate Democrats vote against arms sales to Israel :: Reader View</title></head>
+<body tabindex="1" data-images="true" data-font="sans-serif" data-columns="1">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" data-mode="compact" href="https://jewishinsider.com/2026/04/majority-senate-democrats-vote-block-arm-sales-israel/?utm_source=jis"><button id="qr-button" style="border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; background: transparent; padding: 0px; cursor: pointer;"><svg viewBox="0 0 256 256" style="width: 24px; fill: var(--fg); pointer-events: none;"><rect height="80" rx="16" width="80" x="40" y="40"></rect><rect height="80" rx="16" width="80" x="40" y="136"></rect><rect height="80" rx="16" width="80" x="136" y="40"></rect><path d="M144,184a8,8,0,0,0,8-8V144a8,8,0,0,0-16,0v32A8,8,0,0,0,144,184Z"></path><path d="M208,152H184v-8a8,8,0,0,0-16,0v56H144a8,8,0,0,0,0,16h32a8,8,0,0,0,8-8V168h24a8,8,0,0,0,0-16Z"></path><path d="M208,184a8,8,0,0,0-8,8v16a8,8,0,0,0,16,0V192A8,8,0,0,0,208,184Z"></path></svg></button>
+    <span>jewishinsider.com</span>
+    <span>/2026/04/majority-senate-democrats-vote-block-arm-sales-israel/</span>
+    <span>https://jewishinsider.com/2026/04/majority-senate-democrats-vote-block-arm-sales-israel/?utm_source=jis</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Following Bernie Sanders’ lead, 40 Senate Democrats vote against arms sales to Israel</h1>
+  <span dir="auto" id="reader-credits">Marc Rod</span>
+  <span dir="auto" id="reader-estimated-time">7-9 minutes</span>
+  <span dir="auto" id="published-time">4/15/2026</span>
+  <hr>
+  <div id="readability-page-1" class="page"><section>
+			
+		
+		<article>
+
+			
+
+			
+<section>
+            
+
+
+<p>Most of the Democrats in the Senate — 40 in total, including some traditionally pro-Israel lawmakers — voted on Wednesday evening for a <a href="https://jewishinsider.com/2026/03/bernie-sanders-progressives-arms-sales-israel-votes/">measure led by Sen. Bernie Sanders (I-VT)</a> that aimed to block sales of bulldozers to Israel, with 36 of them also voting to advance a second Sanders-backed resolution to block sales of thousands of 1,000-pound bombs.</p>
+
+
+
+<p>The votes are a striking statement of the extent to which anti-Israel sentiment has become mainstream in the Democratic Party. Just seven members of the Democratic caucus voted against both measures.</p>
+
+
+
+<p>Twenty-seven Democrats supported at least one of two <a href="https://jewishinsider.com/2025/07/majority-senate-democrats-block-u-s-aid-to-israel-bernie-sanders/">similar measures in July 2025</a>, which was a record at that time.</p>
+
+
+
+<p>After having opposed previous similar efforts, Sens. Mark Kelly (D-AZ), Ruben Gallego (D-AZ), Adam Schiff (D-CA), Ron Wyden (D-OR), Maria Cantwell (D-WA), Gary Peters (D-MI), Mark Warner (D-VA), Cory Booker (D-NJ), Elissa Slotkin (D-MI), John Hickenlooper (D-CO), Michael Bennet (D-CO), Alex Padilla (D-CA) and Maggie Hassan (D-NH) all flipped and voted in favor of Sanders’ latest resolutions.</p>
+
+
+
+<p>Warner and Peters, along with Sens. Jack Reed (D-RI) and Sheldon Whitehouse (D-RI), voted to advance the resolution to block the bulldozer sale but against advancing the one on bombs.</p>
+
+
+
+<p>Sens. Angela Alsobrooks (D-MD), Tammy Baldwin (D-WI), Lisa Blunt Rochester (D-DE), Tammy Duckworth (D-IL), Dick Durbin (D-IL), Martin Heinrich (D-NM), Mazie Hirono (D-HI), Tim Kaine (D-VA), Andy Kim (D-NJ), Angus King (I-ME), Amy Klobuchar (D-MN), Ben Ray Lujan (D-NM), Ed Markey (D-MA), Jeff Merkley (D-OR), Chris Murphy (D-CT), Patty Murray (D-WA), Jon Ossoff (D-GA), Brian Schatz (D-HI), Jeanne Shaheen (D-NH), Tina Smith (D-MN), Chris Van Hollen (D-MD), Raphael Warnock (D-GA), Elizabeth Warren (D-MA) and Peter Welch (D-VT), all of whom had supported at least one past effort to block arms sales, voted for both measures on Wednesday.</p>
+
+
+
+<p>Every Senate Democrat rumored to have presidential ambitions voted to block both arms sales.</p>
+
+
+
+<p>Kelly, a moderate Democrat and potential presidential candidate, insisted in a Senate floor speech that he “cannot and will not abandon Israel,” which is “one of our closest partners. They have a right to defend themselves, and I will always support Israel’s right to exist as a successful and prosperous nation.”</p>
+
+
+
+<p>But, he said, “Supporting a partner doesn’t mean that we don’t ask tough questions. It doesn’t mean that we always agree. Our support for our allies must always be about what makes us stronger and safer, and we can look at what’s happening in the region right now and understand that this is not business as usual, and it is not making us safer,” referring to the war in Iran, Israel’s war against Hezbollah in Lebanon and violence in the West Bank.</p>
+
+
+
+<p>He said that the weapons sales will not “bring us closer to peace and security,” but that he remains “confident” that Israel has the ability to protect its people and that “we’ll be able to do so in the future with our partnership and I will always support that.”</p>
+
+
+
+<p>Schiff, who is Jewish and generally a reliable supporter of Israel, and Padilla released a joint statement saying that they voted for the resolutions “to oppose the U.S. sale of specific weapons and equipment to Israel which might be used in Iran or to facilitate further settlement activity, which we believe undermine Israel’s long-term security and our own.”</p>
+
+
+
+<p>“We strongly support Israel’s right to defend itself and the right of the people of Israel to live in peace and prosperity in a Jewish state,” they said. “We oppose actions that further deepen the United States in an unauthorized conflict in Iran — one with no clear strategy, no legal authority, and no defined end.”</p>
+
+
+
+<p>They said they also intend to oppose any supplemental funding for the war.</p>
+
+
+
+<p>Slotkin said she would “continue to assess U.S.-funded offensive weapons to Israel on a case-by-case basis” but would continue to support missile-defense systems. She said that she had “struggled with these [measures] as much as any vote since I joined Congress.”</p>
+
+
+
+<p>“My entire life, I have been — and continue to be — a strong supporter of a Jewish and democratic State of Israel,” she said. “The people of Israel, like all people throughout the region, deserve long-term security and peace. But being pro-Israel today is not about simply supporting the political or military agenda of Prime Minister Netanyahu, just like being pro-American should not be equated with loyalty to President Trump.”</p>
+
+
+
+<p>Slotkin said she is also “deeply skeptical” of providing additional funding for the war in Iran.</p>
+
+
+
+<p>Warner, the top Democrat on the Senate Intelligence Committee, told <em>Jewish Insider</em> in a statement that he did not want to provide equipment to enable displacements of Palestinians in the West Bank or “escalatory military actions in southern Lebanon,” which he called contrary to both Israel and the United States’ interests.</p>
+
+
+
+<p>“The United States can and must hold two truths at once: we can stand firmly with Israel’s security while also speaking out against actions that jeopardize peace and stability in the region,” Warner said. “Israel has an unequivocal right to defend itself, but it does not have the right to unilaterally displace Palestinians in the West Bank and torpedo any chance of ever achieving a two-state solution.”</p>
+
+
+
+<p>“The United States should ensure that Israel has the tools it needs to protect its people and deter its adversaries while opposing transfers of equipment that are used to demolish homes, expand settlements, and further entrench a reality that weakens the already fragile prospects for a durable peace,” he continued.</p>
+
+
+
+<p>Sanders, who has <a href="https://www.theguardian.com/commentisfree/2026/apr/15/no-more-us-military-aid-to-israel">called for the U.S.</a> to “end US military aid to the extremist Netanyahu government,” had described these votes as a referendum on the war in Iran, as well as Israel’s attacks on Hezbollah in Lebanon and violence by settlers and Israeli military forces in the West Bank.</p>
+
+
+
+<p>J Street, the progressive Israel advocacy group that last week called for the U.S. to end financial support for Israel’s missile-defense systems after the current U.S.-Israel memorandum of understanding expires in 2028, supported the Sanders-led resolutions.</p>
+
+
+
+<p>Senate Minority Leader Chuck Schumer (D-NY) and Sens. Kirsten Gillibrand (D-NY), Jacky Rosen (D-NV), Catherine Cortez Masto (D-NV), Richard Blumenthal (D-CT), John Fetterman (D-PA) and Chris Coons (D-DE) were the only Democrats to oppose both resolutions.</p>
+
+
+
+<p>Gillibrand, who this week introduced a war powers resolution to halt the war in Iran, told JI on Wednesday morning that she sees the resolutions on weapons sales to Israel and the resolutions on the Iran war “very differently.”</p>
+
+
+
+<p>“I oppose the war in Iran, but I do not believe we should leave an ally [Israel] who is being attacked without support,” Gillibrand said during a press conference.</p>
+
+
+
+<p>AIPAC said in a statement, “We appreciate the senators who opposed these misguided and dangerous resolutions. Letting our democratic ally buy American-made equipment to protect its families from Iran and terrorist groups is clearly in America’s national interest. Congress must continue to stand with Israel as it confronts multiple ongoing threats.”</p>
+    </section>
+							
+			    
+		</article>
+
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+<style id="note-styling">
+    .note {
+      position: absolute;
+      z-index: 10;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: inherit;
+      padding: 5px;
+      min-width: 32px;
+      min-height: 32px;
+    }
+    .note:focus {
+      z-index: 11;
+    }
+    .note[type="0"] {
+      background-color: #fff740;
+      color: #2c2c2d;
+    }
+    .note[type="0"]::placeholder {
+      color: #868226;
+    }
+    .note[type="1"] {
+      background-color: #feff9c;
+      color: #2c2c2d;
+    }
+    .note[type="1"]::placeholder {
+      color: #6d6d3d;
+    }
+    .note[type="2"] {
+      background-color: #ff65a3;
+      color: #2c2c2d;
+    }
+    .note[type="2"]::placeholder {
+      color: #65263f;
+    }
+    .note[type="3"] {
+      background-color: #ff7eb9;
+      color: #2c2c2d;
+    }
+    .note[type="3"]::placeholder {
+      color: #562b3f;
+    }
+    .note[type="4"] {
+      background-color: #7afcff;
+      color: #295c5d;
+    }
+    .note[type="4"]::placeholder {
+      color: #377677;
+    }</style><div id="chapters-container">
+      <style>
+        #chapters {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          margin: 2ch 0;
+        }
+        #chapters a {
+          cursor: pointer;
+        }
+        #chapters a[href=""] {
+          opacity: 0.5;
+          pointer-events: none;
+          color: inherit;
+        }
+        #chapters a:first-child {
+          justify-self: start;
+        }
+        #chapters a:last-child {
+          justify-self: end;
+        }
+      </style>
+      <hr>
+      <div id="chapters">
+        <a href="" title="move to the previous chapter (Ctrl/Command + PageUp)">Previous Chapter</a>
+        <a href="https://jewishinsider.com/2026/03/gregory-goldner-next-nyc-pac-rahm-emanuel-zohran-mamdani/" title="move to the next chapter (Ctrl/Command + PageDown)">Next Chapter</a>
+      </div>
+    </div></body><style>body {
+      font-size:  15px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: min(100% - 2rem, 600px);
+    }
+    p {
+      text-align: justify
+    }
+    .page {
+      line-height: 22.5px;
+      column-count: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
