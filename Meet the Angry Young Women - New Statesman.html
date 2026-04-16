@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" data-mode="sepia"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <base target="_blank">
+  <style type="text/css" id="ftp">html[data-mode="light"] {
+    color-scheme: light;
+    --fg: #222;
+    --bd: #222;
+    --bg: whitesmoke;
+  }
+  html[data-mode="dark"] {
+    color-scheme: dark;
+    --fg: #eee;
+    --bd: #eee;
+    --bg: #333;
+  }
+  html[data-mode="sepia"] {
+    color-scheme: light;
+    --fg: #5b4636;
+    --bd: #5b4636;
+    --bg: #f4ecd8;
+  }
+  html[data-mode="solarized-light"] {
+    color-scheme: light;
+    --fg: #586e75;
+    --bd: #586e75;
+    --bg: #fdf6e3;
+  }
+  html[data-mode="nord-light"] {
+    color-scheme: light;
+    --fg: #2e3440;
+    --bd: #2e3440;
+    --bg: #e5e9f0;
+  }
+  html[data-mode="groove-dark"] {
+    color-scheme: dark;
+    --fg: #cec4ac;
+    --bd: #cec4ac;
+    --bg: #282828
+  }
+  html[data-mode="solarized-dark"] {
+    color-scheme: dark;
+    --fg: #839496;
+    --bd: #839496;
+    --bg: #002b36;
+  }
+  html[data-mode="nord-dark"] {
+    color-scheme: dark;
+    --fg: #e5e9f0;
+    --bd: #e5e9f0;
+    --bg: #2e3440;
+  }</style>
+  <style>
+    /* latin */
+    @font-face {
+      font-family: 'Comic Neue';
+      font-style: normal;
+      font-weight: 400;
+      src: url(fonts/4UaHrEJDsxBrF37olUeD96rp57F2IwM.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'Lexend Deca';
+      font-style: normal;
+      font-weight: 400;
+      src: url(fonts/K2FifZFYk-dHSE0UPPuwQ7CrD94i-NCKm-U48M1wqxnDirZPl3v-.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 400;
+      src: url(fonts/pxiEyp8kv8JHgFVrJJfecnFHGPc.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    :root {
+      --fg: #000; /* foreground  */
+      --bg: #fff; /* background  */
+      --bd: #000; /* border  */
+      --lk: #006fa5; /* link */
+      --lkv: #d33bf0; /* link visited */
+      --hg: #ffff81; /* highlight  */
+    }
+    html {
+      overflow: overlay;
+      scrollbar-color: var(--fg) var(--bg);
+    }
+    html[data-mode$="dark"] {
+      --lk: #0096de;
+    }
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      margin: 30px auto 0 auto;
+      padding: 10px;
+      position: relative;
+
+      color: var(--fg);
+      border-color: var(--bd);
+      background-color: var(--bg);
+    }
+
+
+    @media print {
+      html[data-mode] {
+        --fg: #000;
+        --bd: #000;
+        --bg: #fff;
+
+        width: unset;
+        padding: 0;
+        margin: 0;
+      }
+    }
+    iframe,
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    img:not([width])[src$=".svg"] {
+      max-width: 100px;
+    }
+    body[data-images=false] canvas,
+    body[data-images=false] svg,
+    body[data-images=false] img {
+      display: none;
+    }
+    svg:not([width]):not([height]) {
+      max-width: 25vmin;
+    }
+    a {
+      color: var(--lk);
+      text-decoration: none;
+    }
+    a:visited {
+      color: var(--lkv);
+    }
+
+    hr {
+      background-color: var(--bd);
+      height: 1px;
+      border: 0;
+    }
+    #reader-domain {
+      display: inline-flex;
+      align-items: anchor-center;
+      gap: 5px;
+      font-family: Helvetica, Arial, sans-serif;
+      text-decoration: none;
+      border-bottom-color: currentcolor;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+      direction: ltr;
+    }
+    #reader-domain > span:nth-of-type(1) {
+      font-size: 1.1em;
+    }
+    #reader-domain > span:nth-of-type(2) {
+      font-size: 0.8em;
+    }
+    #reader-domain[data-mode="compact"] > span:nth-of-type(3) {
+      display: none
+    }
+    #reader-domain:not([data-mode="compact"]) > span:nth-of-type(1),
+    #reader-domain:not([data-mode="compact"]) > span:nth-of-type(2) {
+      display: none;
+    }
+
+    #reader-title {
+      font-size: 1.6em;
+      line-height: 1.25em;
+      width: 100%;
+      margin: 20px 0;
+      padding: 0;
+    }
+    #reader-credits,
+    #doi,
+    #published-time,
+    #reader-estimated-time {
+      font-size: 0.85em;
+      line-height: 1.48em;
+      margin: 0 0 10px 0;
+      padding: 0;
+    }
+    #reader-credits:not(:empty)::after {
+      content: ' ⋮ ';
+    }
+    #published-time:not(:empty)::before {
+      content: ' ⋮ ';
+    }
+    #doi-json {
+      overflow: hidden;
+    }
+    #doi-json code {
+      overflow: auto;
+      max-height: 400px;
+    }
+    #published-time:empty,
+    #reader-credits:empty {
+      display: none;
+    }
+    mark.hghlght {
+      background-color: var(--hg);
+    }
+    body:not([data-columns="1"]) .page :is(h1, h2) {
+      column-span: all;
+      background-color: rgba(125, 125, 125, 0.1);
+      padding: 10px;
+    }
+    .hidden {
+      display: none;
+    }
+    .page-separator {
+      background-color: rgba(125, 125, 125, 0.1);
+      padding-block: 2ch;
+      text-align: center;
+      font-size: medium;
+    }
+  </style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+  overflow: hidden;
+}
+blockquote {
+  padding: 0;
+  padding-inline-start: 2ch;
+  border-inline-start: 2px solid var(--bd);
+}
+aside {
+  color: color-mix(in srgb, var(--fg), var(--bg) 20%);
+}
+body[data-mode="dark"] pre code {
+  background-color: #eff0f1;
+  color: #393318;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+html[data-mode=sepia] body {}
+/* CSS for "light" theme */
+html[data-mode=light] body {}
+/* CSS for "dark" theme */
+html[data-mode=dark] body {}</style>
+<title>Meet the Angry Young Women - New Statesman</title><title>Meet the Angry Young Women - New Statesman :: Reader View</title></head>
+<body tabindex="1" data-images="true" data-font="sans-serif" data-columns="1">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" data-mode="compact" href="https://archive.ph/XMtoV"><button id="qr-button" style="border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; background: transparent; padding: 0px; cursor: pointer;"><svg viewBox="0 0 256 256" style="width: 24px; fill: var(--fg); pointer-events: none;"><rect height="80" rx="16" width="80" x="40" y="40"></rect><rect height="80" rx="16" width="80" x="40" y="136"></rect><rect height="80" rx="16" width="80" x="136" y="40"></rect><path d="M144,184a8,8,0,0,0,8-8V144a8,8,0,0,0-16,0v32A8,8,0,0,0,144,184Z"></path><path d="M208,152H184v-8a8,8,0,0,0-16,0v56H144a8,8,0,0,0,0,16h32a8,8,0,0,0,8-8V168h24a8,8,0,0,0,0-16Z"></path><path d="M208,184a8,8,0,0,0-8,8v16a8,8,0,0,0,16,0V192A8,8,0,0,0,208,184Z"></path></svg></button>
+    <span>archive.ph</span>
+    <span>/XMtoV</span>
+    <span>https://archive.ph/XMtoV</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Meet the Angry Young Women - New Statesman</h1>
+  <span dir="auto" id="reader-credits"></span>
+  <span dir="auto" id="reader-estimated-time">20-25 minutes</span>
+  <span dir="auto" id="published-time">4/14/2026</span>
+  <hr>
+  <div id="readability-page-1" class="page"><article id="the-post">
+
+        
+<header>
+    <div><div><p>Across Britain a radical new feminism is rising</p></div><div><figure>
+
+        <img currentsourceurl="https://dl6pgk4f88hky.cloudfront.net/2026/04/14/202616emilymain.jpg" alt="" decoding="async" fetchpriority="high" loading="lazy" sizes="(max-width: 1407px) 1407px, (max-width: 335px) 335px, (max-width: 705px) 705px, (max-width: 335px) 335px, (max-width: 689px) 689px, (max-width: 336px) 336px, (max-width: 210px) 210px, (max-width: 101px) 101px, (max-width: 1024px) 1024px, (max-width: 101px) 101px, (max-width: 397px) 397px, (max-width: 464px) 464px, (max-width: 797px) 797px, (max-width: 960px) 960px, (max-width: 314px) 314px, (max-width: 464px) 464px, (max-width: 735px) 735px, (max-width: 1038px) 1038px" src="https://d8h5fgzxr4g6n9.archive.ph/XMtoV/5270df8ba15073d3a96d064f5d554fd41dcffd37.jpg">
+                <figcaption>Illustrations by Hanna Barczyk</figcaption>
+            </figure></div></div></header>
+    
+        <div id="figarocontent"><div><ul>
+        <li>
+            <a href="mailto:type%20email%20address%20here?subject=I%20wanted%20to%20share%20this%20post%20with%20you%20from%20New%20Statesman&amp;body=Meet%20the%20Angry%20Young%20Women%20-%20https://www.newstatesman.com/cover-story/2026/04/meet-the-angry-young-women-why-young-women-dont-want-to-date-me" title="Share in an email"><span></span>
+            </a>
+        </li>
+        <li>
+            <a href="https://archive.ph/o/XMtoV/https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.newstatesman.com/cover-story/2026/04/meet-the-angry-young-women-why-young-women-dont-want-to-date-me" target="_blank" title="Share on LinkedIN"><span></span>
+            </a>
+        </li>
+        <li>
+            <a href="https://archive.ph/o/XMtoV/https://twitter.com/intent/tweet?url=https://www.newstatesman.com/cover-story/2026/04/meet-the-angry-young-women-why-young-women-dont-want-to-date-me" target="_blank" title="Share on Twitter"><span></span>
+            </a>
+        </li>
+        <li>
+            <a href="https://archive.ph/o/XMtoV/https://www.newstatesman.com/cover-story/2026/04/meet-the-angry-young-women-why-young-women-dont-want-to-date-me" target="_blank" title="Share on facebook"><span></span>
+            </a>
+        </li>
+    <span></span></ul></div><p><span>“I</span>f you’re feeling overwhelmed by the Epstein file drop, do not worry, girl,” Phoebe O’Brien says in a video, facing the camera. O’Brien has bright, green eyes, three silver nose rings and cropped blonde hair. “The Epstein class want you to hate every other group,” she tells her 80,000 TikTok followers. “Migrants, brown people, poor people, disabled people, trans people.” O’Brien is one of many young, often attractive, female influencers whose content spans various left-wing and anti-imperialist causes. Each week she posts softly lit videos of herself denouncing Keir Starmer, Donald Trump and Israel.</p><p>I watched a lot of O’Brien’s posts before I messaged her. I wanted to understand how she got into this kind of content. In February we met in a café in south-east London. She wore a keffiyeh and sipped hot chocolate as she told me how the latest Jeffrey Epstein revelations had energised her. It made the right-wingers who claimed to care about women and children’s safety look like hypocrites, she said. It was the billionaires who were the real problem. She’d been “teetering on the edge of an anxiety attack” since the files dropped. To quell her panic, she’d been “working with other TikTok creators, doing journalist-type things”.</p><p>O’Brien grew up in Leicester, in what she calls a working-class family. (She defined this in the Marxist sense, meaning anybody who works for a wage, unlike the “asset class” and what she calls the billionaire “Epstein class”.) She had always been progressive. But while studying for her master’s degree at Bristol University, she started going to Black Lives Matter protests on College Green and felt inspired by the collective energy she saw there. She already had a TikTok following from sharing “random content”, but her audience rapidly grew as her posts got more political. Hamas’s 7 October 2023 attack on Israel, and Israel’s response in Gaza, was a “catalytic moment” for her. “I had been talking about immigration issues before, like Marxism, like philosophy,” she said. “Then it all just became the war.”</p><p>O’Brien’s content, and that of a growing number of left-wing female influencers like her, is in some ways a mirror image of the content made by male influencers. While the toxic, often hard-right politics of the manosphere has been exhaustively documented, the new generation of female influencers are similarly radical – they are just on the other side of the political spectrum. On the internet, women and men have never been more alienated from each other.</p><section>
+                        <p><a href="https://archive.ph/o/XMtoV/https://www.newstatesman.com/cover-story/2026/04/javascript(void);" target="_blank"><img currentsourceurl="https://dl6pgk4f88hky.cloudfront.net/2021/09/TNS_master_logo.svg" decoding="async" loading="lazy" src="https://d8h5fgzxr4g6n9.archive.ph/XMtoV/0b6b2e63d7a5b9318ecd3582fb967b9c3ca114d9.svg"></a></p>
+                            <p>Subscribe to the New Statesman today and save 75% </p>
+                            
+                        </section><p>Online divides have also bled into real life. <a href="https://archive.ph/o/XMtoV/https://www.newstatesman.com/politics/uk-politics/2026/04/revealed-the-new-radicalism-among-young-women" rel="noopener" target="_blank">Exclusive polling by Merlin Strategy for the <em>New Statesman</em></a> reveals that young women, aged between 18 and 30, are by far the most progressive demographic in the UK. This polling found that young women are 26 percentage points less likely to feel positively about capitalism than young men, and much less likely to feel the economy works in their favour. They are also much more pessimistic about the future – their own, and everyone else’s. They also feel much more negatively towards young men than young men feel about them.</p><p>While this “femosphere” spans a range of tones, much of it reinforces this hostility towards men: there are misandrist dating coaches who urge women to reject men altogether, and more explicitly progressive content creators who cover global and domestic politics. Many of the left-wing accounts O’Brien interacted with were withering about men. Megan Cooper, a British “trauma-informed holistic therapist”, has a podcast called <em>Higher Love</em> in which she discusses violence against women, “hypermasculinity” and “the ecosystem of manufactured male victimhood”. On Instagram Cooper posted about the conflicts in Iran, Palestine, Beirut and Sudan. “I don’t know about you but for the past few months, my bones have ached,” she wrote in March. “The viscerality of the feminine wound.” O’Brien has also shared posts from Frank Riot, a female artist with long bleached blonde hair. Scroll through Riot’s Instagram page and you’ll see selfies of her wearing “ACAB” (all cops are bastards) bandanas and suffragette rosettes, alongside infographics about Israel’s war crimes. “Meet me by the ruins of the war machine,” read a recent post. “Kiss me at the dawn of its demise.”</p><p>O’Brien told me she considers herself a revolutionary rather than an activist. “Revolutionary is more, ‘I want systemic change. I don’t want to exist within these same systems. I want to be an instrument of the revolution.’” She said she felt anxious seeing injustice and doing nothing. It was a physical sensation in the centre of her body. Perhaps this was why women were more likely to be progressive than men, she speculated. “Women tend to be a little bit more connected to their bodies and their physical sensations and emotions.” It seemed like an essentialist, even reactionary&nbsp; view of gender: the idea that women are emotional, physical beings, in a way men aren’t. But O’Brien said that anxiety spurred her on. “The only way I’ve found to release the negative sensation is to act.”</p><p><span>T</span>here are many reasons for young women to feel downcast. One in four women in England and Wales have been raped or sexually assaulted. Police record around 3,000 offences related to violence against women and girls each day. The economic outlook for all young people, meanwhile, is fairly bleak. But, strikingly, the polling done for the <em>New Statesman </em>suggests more privileged women are the most pessimistic of all. Women in middle-class professions are less likely to say they feel valued by society, and are less likely to believe that if they work hard they will succeed in life when compared with their working-class counterparts. Young men are now more likely to be unemployed than young women, yet young women are far more financially cynical: they are 21 points less likely than young men to believe they will ever out-earn their parents. White women are more likely to feel the country is racist than non-white women.</p><p>The lack of hope among this new wave of progressive, educated young women surprised me. In 2015, my school set up its first feminist society; we’d read Caitlin Moran and Naomi Wolf and we joined political Facebook groups, arguing with teenage boys about terms like intersectional feminism and structural racism. We talked about rape culture, Black Lives Matter, whether tanning was cultural appropriation and if shaving our armpits was a capitulation to the male gaze. But young women have become far more disaffected in the years since. After the isolation of Covid, and Western governments’ apathy over the war in Gaza, a profound pessimism has emerged that didn’t exist even a decade ago.</p><p>I spent the past few months in search of the new left-wing young women. It wasn’t difficult – they were everywhere. I went to a south London Burns Night ceilidh organised by the youth wing of the union Unison to raise money for striking NHS phlebotomists in Gloucester and National Coal Mining Museum workers in Wakefield. As it was about 80 per cent women, dancing pairs were organised by height, not gender. (“Tall, dominant, low-voiced people, you’re the leaders,” we were told.) One January afternoon I stopped by a protest outside the Ministry of Justice for the Palestine hunger strikers, where a handful of older men and a squad of young women in puffer jackets and Doc Martens were standing together. A girl with red lipstick had written the words “blood on your hands” in red ink on her palms. She chanted: “Five, six, seven, eight, smash the Zionist settler state!” A week later I went along to the national march for Palestine as it progressed from Russell Square to Whitehall. There were more than 100,000 marchers, who could be roughly categorised into three groups: Muslim men, pensioners selling copies of the <em>Socialist</em> and what looked like lots of bright-haired girls, though several told me politely that they were non-binary.</p><p>Many young women talked about empathy. Women have more of it than men, they said. Greta Thunberg stopped eating as a child because of climate anxiety. Sally Rooney said in a speech in March that solidarity with Palestine was the only way “to fend off despair”. But it wasn’t just celebrities: every woman I spoke to seemed to feel this way. (Of course, not every young woman is so progressive, but the trend is stark: the <em>New Statesman</em>’s polling showed that Gen Z women were more likely to support causes such as feminism, environmentalism and anti-racism than young men.) “Not caring” about the news was inconceivable to the women I met. How could they not be progressive? How could they not be angry?</p><figure><img currentsourceurl="https://dl6pgk4f88hky.cloudfront.net/2026/04/14/202616emilyl2.jpg" alt="" decoding="async" loading="lazy" sizes="(max-width: 817px) 100vw, 817px" src="https://d8h5fgzxr4g6n9.archive.ph/XMtoV/ffe62fdef4756ff191bf54a86f45b5a9d0c7883d.jpg"></figure><p><span>O</span>ne early-spring evening I went to Mince, a performance night in aid of Five for Five, a crowdfunder for transgender causes. It was held at the Feminist Library in Peckham and “free for dolls” (trans women), cheaper for other trans people, and “about a tenner for cis people”. The walls were covered in women’s liberation literature and posters on resisting immigration raids; a pole-dancing class was taking place in the next room. The audience was nearly all young women. The line-up: a disabled Indian classical dancer, an improv double act called “Margarets”, a Lebanese-British singer who sang about “displacement, love and everything in-between”. It felt like any university performance night.</p><p>A performer called Angel was doing a monologue about her former job in a bookshop. She read extracts from a book called <em>Morning Glory Milking Farm</em>, a romance-fantasy smut novel about a milkmaid and a minotaur. (When I googled the book, the first result on YouTube described it as “a critique about late-stage capitalism and toxic masculinity”.) Angel read aloud from the novel: “‘She wondered what it would be like to be fucked by a bull.” She paused. “I’ve never had that thought. Maybe it’s because I’m gay.”</p><p>As Angel analysed the problematic racial undertones of <em>Morning Glory Milking Farm</em>, I noticed the young woman sitting next to me seemed a little confused. She told me her name was Anna, she was 27 and she lived nearby. She had stumbled into the Feminist Library after seeing a poster outside. She wasn’t especially impressed with the Mince performances; she thought they were under-rehearsed. She told me she didn’t leave the house much because of her chronic fatigue and pain, which stemmed from reproductive issues linked to endometriosis. She ran an Instagram account on which she posted information about chronic illness. She interacted with a lot of other accounts dedicated to social justice. They all posted similar kinds of content: mostly “memes of, like, the world burning”. Anna was convinced that pain was an intrinsic part of being female. “Women are the ones that give birth,” she said. Periods hurt, early sexual experiences were often painful and pleasureless. “You’re taught to expect pain when you have sex. You’re taught that so many forms of discomfort are normal.”</p><p>When Anna talked about sex, I was struck by how she almost sounded like the American writer, Andrea Dworkin. Like O’Brien, the influencer, Anna connected her radicalism to the inherent pain of being female. It was not far off how previous generations of feminists might have connected their politics to gendered violence. But the root of younger women’s complaints didn’t seem to be simply misogyny: it was far more amorphous, touching on almost everything about capitalism, about Britain, about their lives.</p><p>Anna’s politics had become more radical during the long process of getting personal independence payments for her disability. She felt the whole system was set up against her. The experience made her feel dehumanised. “I no longer feel politically aligned with this country,” she said. She told me that all of the accounts she follows online are run by women or disabled or queer people. “There is this real sense of panic and hopelessness,” she said about politics. “We have policies that aren’t looking after us. We have a government that doesn’t seem to give a shit if genocide happens.”</p><p>Anna has a boyfriend, whom she described as “a fucking Labrador”. “He’s reading books about how climate change isn’t actually that big a deal, and it’s hard to separate that from the fact that he’s not really faced much adversity in his life as a straight white man who was privately educated,” she said. “I’m probably the adversity in his life.”</p><p>When he and his friends talked about the world and politics, it sounded very different to the way she talked with her friends, who were all either female or non-binary. She couldn’t imagine a group of men sitting around at the pub, saying things like, “I’m really worried about what the DWP is doing to disabled people.”</p><p>Anna didn’t want to seem like a man-hater. “But I do kind of feel like the more revolutionary spaces that I’m drawn to are primarily disabled-led and queer-led spaces, that they’re spaces and groups of people from the fringes of society that understand the need for change, because they are living through a time that is really tumultuous and difficult. I don’t see that being a priority, particularly for straight, white, able-bodied men.”</p><p>When I asked women what specifically had radicalised them, the war in Gaza was the most common answer. This spring I went to Leeds to meet Ash, who was part of the university’s Palestine Solidarity Group. The group was made up of mostly women, she told me. They organised Gaza fundraising events like bazaars and drag shows, and attended regular Sunday morning pro-Palestine marches through the city.</p><p>The solidarity group had raised more than £7,000 this year to support Palestinians. Still, she felt anxious that she wasn’t doing enough to help: “I feel a lot of guilt, even though I didn’t commit any war crimes.” Politics was Ash’s whole life. She spent much more time on her activism than her university work. When she met up with friends, they’d talk about their lives but it would always return to politics. She didn’t like the UK. She was scared of racism and the far right, and outside of her female friends, she didn’t think people cared about the issues that mattered most to her. “There’s nothing for me in this country,” she said.</p><p>Ash told me she didn’t have any plans for her future. “I kind of put my personal life and personal goals and personal advancement on the side, because I’m involved with these Palestine things,” she said. “If I can do something to make someone else comfortable, I should.”</p><p>Ash first noticed that men felt the impact of the war less keenly when she lived on the 2024 encampments outside the Student Union. One May evening, Israel struck a Palestinian camp in Tel al-Sultan in the southern Gaza Strip. The attack caused a blaze that set tents alight and killed 45 people. Ash remembered watching videos of the attack, feeling cold and hopeless. Several women began openly weeping. The male students, meanwhile, were preoccupied with planning the next day’s protest. “I feel like sometimes men don’t feel the gravity of the thousands of people that have died,” Ash told me. “Men have to take a step back to actually see the situation and empathise with the person, but they don’t. If the system is set up for you to benefit, it doesn’t really matter.”</p><p><span>I</span>&nbsp;wasn’t sure how real, or widespread, this antipathy was towards the opposite gender. I’ve known several women who’d insist they hated straight white men while evidently finding them enthralling. But it felt like the divides had grown wider since then – particularly among women who had gone to university, who were significantly to the left of their peers who hadn’t.</p><p>It was a Wednesday night and seven members of the University of Leeds’s feminist society had invited me to join their book swap. We were in a classroom in the healthcare wing, and there was a pile of books on the table: Margaret Atwood’s <em>The Penelopiad</em>, Audre Lorde’s <em>Zami: A New Spelling of My Name</em>. Someone had brought Heather Morris’s <em>The Tattooist of Auschwitz</em>. We’d debated whether <em>Harry Potter</em> gets more respect than <em>The Hunger Games</em> because the main character is male, the racial politics of <em>Wuthering Heights</em>, the sexual politics of Sally Rooney.</p><p>The literary conversation was winding down. I asked the table how they felt about the young men they knew. “I don’t care for them,” said a girl called Ruby imperiously. She had red hair and lots of silver jewellery. “They’re not bad people, but they refuse to call out their friends who make other girls uncomfortable. They’ll laugh at jokes that are sexist, racist, homophobic; they don’t care about political issues… I don’t think they like women a lot.” If a man is attracted to you, she said, he might talk about things like toxic misogyny. If he doesn’t fancy you, he won’t bother. “I feel like a lot of it is quite sexually motivated with men.”</p><p>I asked if they’d consider dating a man with different politics. They all immediately said no. “I don’t think I’d even be friends with one,” said one girl. “They don’t see you as human.” Only one woman, Evelyn, admitted to having male friends (though she was worried this made her a “pick me”, trying too hard for male attention). Evelyn was concerned about what the men she knew were watching online. “The stuff that’s being said about women is crazy,” she said. “They’re getting all these reels, talking about, like, bad stuff about women. And I get reels of women saying bad stuff about men. I try to think, not all men are like this, but…”</p><p>Ruby had recently carried out a survey for a course. She asked 30 final-year students – 15 men, 15 women – how they’d vote at the next general election. Most of the women said Green or Labour. Men said Conservatives or Lib Dem. (All the women around the table told me they’d vote Green.) Ruby also asked her respondents where they see themselves when they’re 30. Of the men, all but two said they wanted to be married with children; only three women said the same. Even the women in relationships didn’t want to get married.</p><p>None of the Leeds group found this surprising. Most of their friends felt that way. “It’s a much bigger deal for us to become mothers – we have to get rid of our career,” Evelyn explained. “I’m not fully against kids. I just really don’t want to lose the other things and become just a mother. I want to still be me, and I will probably lose that.”</p><p>These women weren’t outliers. According to the <em>New Statesman</em>’s polling, young women are twice as likely not to want children as young men. All the Leeds women told me they feared a Reform government pressuring them to have babies. One woman mentioned Suella Braverman’s pledge to scrap the Equality Act and repeal other human rights laws. “It just feels… out of control.”</p><p>It all felt impossibly bleak. Most of the women I met were educated, engaging, bright and charismatic. But they weren’t excited about their futures. They didn’t like the men they knew, or the idea of those they didn’t. Men were just a threat who could harm or trap them. And the most privileged women were the most downcast.</p><p>It also didn’t feel like students just trying on radicalism for fun. There is a real stratification of different groups under 30. The internet has pushed young men and women further apart. And the people they interact with on the internet reinforce their beliefs. In a vicious cycle, the femosphere both reflects young women’s disaffection and perpetuates it, radicalising them further. A significant majority of young women feel isolated from the rest of the country. The two main political parties aren’t reaching out to them specifically. They fear Reform. Many say they will vote for the Greens in the upcoming local elections, but few seem to believe that will make a difference. They don’t feel represented by mainstream politics, and they don’t think anyone cares.</p><p>Their growing isolation could also have profound long-term consequences for British society. It will almost certainly make relationships harder: fewer than half of young women feel men understand them. Young women are much less likely than men to date people who disagree with their politics. People will get lonelier, and angrier. And it’s getting worse. Among those under-30, younger women feel the bleakest: women under 25 are most likely to believe things are “stacked against me, no matter how hard I try”.</p><p>All the women I spoke to were involved in what they viewed as deeply moral missions to change a world that they believed didn’t care about them. Of course it wasn’t making them happy. That was kind of the point, though. “I think to be a person that cares about other people,” said the Leeds student with the pink hair, “you’ve got to be pessimistic.”</p><p><em>Some names have been changed</em></p><div><ul>
+        <li>
+            <a href="" title="Share in an email"><span></span>
+            </a>
+        </li>
+        <li>
+            <a href="https://archive.ph/o/XMtoV/https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.newstatesman.com/cover-story/2026/04/meet-the-angry-young-women-why-young-women-dont-want-to-date-me" target="_blank" title="Share on LinkedIN"><span></span>
+            </a>
+        </li>
+        <li>
+            <a href="https://archive.ph/o/XMtoV/https://twitter.com/intent/tweet?url=https://www.newstatesman.com/cover-story/2026/04/meet-the-angry-young-women-why-young-women-dont-want-to-date-me" target="_blank" title="Share on Twitter"><span></span>
+            </a>
+        </li>
+        <li>
+            <a href="https://archive.ph/o/XMtoV/https://www.newstatesman.com/cover-story/2026/04/meet-the-angry-young-women-why-young-women-dont-want-to-date-me" target="_blank" title="Share on facebook"><span></span>
+            </a>
+        </li>
+    <span></span></ul></div></div>
+
+        
+
+
+
+    </article></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+<style id="note-styling">
+    .note {
+      position: absolute;
+      z-index: 10;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: inherit;
+      padding: 5px;
+      min-width: 32px;
+      min-height: 32px;
+    }
+    .note:focus {
+      z-index: 11;
+    }
+    .note[type="0"] {
+      background-color: #fff740;
+      color: #2c2c2d;
+    }
+    .note[type="0"]::placeholder {
+      color: #868226;
+    }
+    .note[type="1"] {
+      background-color: #feff9c;
+      color: #2c2c2d;
+    }
+    .note[type="1"]::placeholder {
+      color: #6d6d3d;
+    }
+    .note[type="2"] {
+      background-color: #ff65a3;
+      color: #2c2c2d;
+    }
+    .note[type="2"]::placeholder {
+      color: #65263f;
+    }
+    .note[type="3"] {
+      background-color: #ff7eb9;
+      color: #2c2c2d;
+    }
+    .note[type="3"]::placeholder {
+      color: #562b3f;
+    }
+    .note[type="4"] {
+      background-color: #7afcff;
+      color: #295c5d;
+    }
+    .note[type="4"]::placeholder {
+      color: #377677;
+    }</style></body><style>body {
+      font-size:  15px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: min(100% - 2rem, 600px);
+    }
+    p {
+      text-align: justify
+    }
+    .page {
+      line-height: 22.5px;
+      column-count: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
