@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" data-mode="sepia"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <base target="_blank">
+  <style type="text/css" id="ftp">html[data-mode="light"] {
+    color-scheme: light;
+    --fg: #222;
+    --bd: #222;
+    --bg: whitesmoke;
+  }
+  html[data-mode="dark"] {
+    color-scheme: dark;
+    --fg: #eee;
+    --bd: #eee;
+    --bg: #333;
+  }
+  html[data-mode="sepia"] {
+    color-scheme: light;
+    --fg: #5b4636;
+    --bd: #5b4636;
+    --bg: #f4ecd8;
+  }
+  html[data-mode="solarized-light"] {
+    color-scheme: light;
+    --fg: #586e75;
+    --bd: #586e75;
+    --bg: #fdf6e3;
+  }
+  html[data-mode="nord-light"] {
+    color-scheme: light;
+    --fg: #2e3440;
+    --bd: #2e3440;
+    --bg: #e5e9f0;
+  }
+  html[data-mode="groove-dark"] {
+    color-scheme: dark;
+    --fg: #cec4ac;
+    --bd: #cec4ac;
+    --bg: #282828
+  }
+  html[data-mode="solarized-dark"] {
+    color-scheme: dark;
+    --fg: #839496;
+    --bd: #839496;
+    --bg: #002b36;
+  }
+  html[data-mode="nord-dark"] {
+    color-scheme: dark;
+    --fg: #e5e9f0;
+    --bd: #e5e9f0;
+    --bg: #2e3440;
+  }</style>
+  <style>
+    /* latin */
+    @font-face {
+      font-family: 'Comic Neue';
+      font-style: normal;
+      font-weight: 400;
+      src: url(fonts/4UaHrEJDsxBrF37olUeD96rp57F2IwM.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'Lexend Deca';
+      font-style: normal;
+      font-weight: 400;
+      src: url(fonts/K2FifZFYk-dHSE0UPPuwQ7CrD94i-NCKm-U48M1wqxnDirZPl3v-.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 400;
+      src: url(fonts/pxiEyp8kv8JHgFVrJJfecnFHGPc.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    :root {
+      --fg: #000; /* foreground  */
+      --bg: #fff; /* background  */
+      --bd: #000; /* border  */
+      --lk: #006fa5; /* link */
+      --lkv: #d33bf0; /* link visited */
+      --hg: #ffff81; /* highlight  */
+    }
+    html {
+      overflow: overlay;
+      scrollbar-color: var(--fg) var(--bg);
+    }
+    html[data-mode$="dark"] {
+      --lk: #0096de;
+    }
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      margin: 30px auto 0 auto;
+      padding: 10px;
+      position: relative;
+
+      color: var(--fg);
+      border-color: var(--bd);
+      background-color: var(--bg);
+    }
+
+
+    @media print {
+      html[data-mode] {
+        --fg: #000;
+        --bd: #000;
+        --bg: #fff;
+
+        width: unset;
+        padding: 0;
+        margin: 0;
+      }
+    }
+    iframe,
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    img:not([width])[src$=".svg"] {
+      max-width: 100px;
+    }
+    body[data-images=false] canvas,
+    body[data-images=false] svg,
+    body[data-images=false] img {
+      display: none;
+    }
+    svg:not([width]):not([height]) {
+      max-width: 25vmin;
+    }
+    a {
+      color: var(--lk);
+      text-decoration: none;
+    }
+    a:visited {
+      color: var(--lkv);
+    }
+
+    hr {
+      background-color: var(--bd);
+      height: 1px;
+      border: 0;
+    }
+    #reader-domain {
+      display: inline-flex;
+      align-items: anchor-center;
+      gap: 5px;
+      font-family: Helvetica, Arial, sans-serif;
+      text-decoration: none;
+      border-bottom-color: currentcolor;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+      direction: ltr;
+    }
+    #reader-domain > span:nth-of-type(1) {
+      font-size: 1.1em;
+    }
+    #reader-domain > span:nth-of-type(2) {
+      font-size: 0.8em;
+    }
+    #reader-domain[data-mode="compact"] > span:nth-of-type(3) {
+      display: none
+    }
+    #reader-domain:not([data-mode="compact"]) > span:nth-of-type(1),
+    #reader-domain:not([data-mode="compact"]) > span:nth-of-type(2) {
+      display: none;
+    }
+
+    #reader-title {
+      font-size: 1.6em;
+      line-height: 1.25em;
+      width: 100%;
+      margin: 20px 0;
+      padding: 0;
+    }
+    #reader-credits,
+    #doi,
+    #published-time,
+    #reader-estimated-time {
+      font-size: 0.85em;
+      line-height: 1.48em;
+      margin: 0 0 10px 0;
+      padding: 0;
+    }
+    #reader-credits:not(:empty)::after {
+      content: ' ⋮ ';
+    }
+    #published-time:not(:empty)::before {
+      content: ' ⋮ ';
+    }
+    #doi-json {
+      overflow: hidden;
+    }
+    #doi-json code {
+      overflow: auto;
+      max-height: 400px;
+    }
+    #published-time:empty,
+    #reader-credits:empty {
+      display: none;
+    }
+    mark.hghlght {
+      background-color: var(--hg);
+    }
+    body:not([data-columns="1"]) .page :is(h1, h2) {
+      column-span: all;
+      background-color: rgba(125, 125, 125, 0.1);
+      padding: 10px;
+    }
+    .hidden {
+      display: none;
+    }
+    .page-separator {
+      background-color: rgba(125, 125, 125, 0.1);
+      padding-block: 2ch;
+      text-align: center;
+      font-size: medium;
+    }
+  </style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+  overflow: hidden;
+}
+blockquote {
+  padding: 0;
+  padding-inline-start: 2ch;
+  border-inline-start: 2px solid var(--bd);
+}
+aside {
+  color: color-mix(in srgb, var(--fg), var(--bg) 20%);
+}
+body[data-mode="dark"] pre code {
+  background-color: #eff0f1;
+  color: #393318;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+html[data-mode=sepia] body {}
+/* CSS for "light" theme */
+html[data-mode=light] body {}
+/* CSS for "dark" theme */
+html[data-mode=dark] body {}</style>
+<title>Trump Aims to Force a Quick Iran Deal With a Slow Squeeze - WSJ</title><title>Trump Aims to Force a Quick Iran Deal With a Slow Squeeze - WSJ :: Reader View</title></head>
+<body tabindex="1" data-images="true" data-font="sans-serif" data-columns="1">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" data-mode="compact" href="https://archive.ph/8bwdw"><button id="qr-button" style="border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; background: transparent; padding: 0px; cursor: pointer;"><svg viewBox="0 0 256 256" style="width: 24px; fill: var(--fg); pointer-events: none;"><rect height="80" rx="16" width="80" x="40" y="40"></rect><rect height="80" rx="16" width="80" x="40" y="136"></rect><rect height="80" rx="16" width="80" x="136" y="40"></rect><path d="M144,184a8,8,0,0,0,8-8V144a8,8,0,0,0-16,0v32A8,8,0,0,0,144,184Z"></path><path d="M208,152H184v-8a8,8,0,0,0-16,0v56H144a8,8,0,0,0,0,16h32a8,8,0,0,0,8-8V168h24a8,8,0,0,0,0-16Z"></path><path d="M208,184a8,8,0,0,0-8,8v16a8,8,0,0,0,16,0V192A8,8,0,0,0,208,184Z"></path></svg></button>
+    <span>archive.ph</span>
+    <span>/8bwdw</span>
+    <span>https://archive.ph/8bwdw</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Trump Aims to Force a Quick Iran Deal With a Slow Squeeze - WSJ</h1>
+  <span dir="auto" id="reader-credits"></span>
+  <span dir="auto" id="reader-estimated-time">10-13 minutes</span>
+  <span dir="auto" id="published-time">4/15/2026</span>
+  <hr>
+  <div id="readability-page-1" class="page"><div><div><p><span></span><time datetime="2026-04-15T20:10:00.000Z">April 15, 2026 4:10 pm</time><span> ET</span><span></span></p></div><section><div><figure><picture><img currentsourceurl="https://images.wsj.net/im-79682449?width=540&amp;size=1.778" alt="A vessel in the Strait of Hormuz, off the coast of Oman's Musandam province." loading="lazy" sizes="(max-width: 639px) 100vw, (max-width: 979px) 620px, (max-width: 1299px) 540px, 700px" src="https://d634q04nmi6qfz.archive.ph/8bwdw/2705f49d475163fd7c8bf6ee0449e00cc86cccab.avif"></picture></figure><figcaption><span>Iran’s decision to close the Strait of Hormuz to most commercial trade roiled global energy markets. </span> <span>Reuters</span></figcaption></div><div><div><h3></h3><div aria-disabled="true" disabled="" aria-labelledby="nk-1-control" id="nk-1-content" role="region"><ul role="list"><li><div><p><span></span>Despite President Trump’s statement that “other countries” will help with the U.S. blockade of Iranian ports, none have stepped forward, and many have outright refused. <span></span></p></div></li><li><div><p><span></span>The White House says the blockade is being implemented “perfectly,” although analysts say it could take weeks or even months before Iran felt serious pressure. <span></span></p></div></li><li><div><p><span></span>U.S. officials are on standby for new talks in Pakistan, but Iran hasn't bowed to U.S. demands for a 20-year enrichment freeze.<span></span></p></div></li></ul><p><span></span>This summary was generated with AI and reviewed by an editor. <a href="https://archive.ph/o/8bwdw/https://www.wsj.com/news/author/wsj-artificialintelligencetools" tabindex="-1" target="_blank">Read more </a>about how we use artificial intelligence in our journalism.<span></span></p></div></div><ul role="list"><li><div><p>Despite President Trump’s statement that “other countries” will help with the U.S. blockade of Iranian ports, none have stepped forward, and many have outright refused. </p><p><a>View more</a></p></div></li></ul></div><p>Over a small, private dinner of spinach soup, scallops and Diet Coke on Monday night, President Trump told the Dutch king and queen that he wants to bring the war in Iran to a swift end.</p><div><p>The only way to get Tehran back to the negotiating table, Trump explained to his royal guests and Dutch officials at the White House dinner, was to increase the pressure, officials briefed on the dinner said. </p><p>The Dutch government already had declined to help Trump with a blockade on Iranian ports, which it called “worrying” and an “escalation upon escalation.” Dutch Prime Minister Rob Jetten, who had seized on the monarchs’ visit to secure an invitation and speak to Trump, told the president that European allies would stand up <a href="https://archive.ph/o/8bwdw/https://www.wsj.com/world/europe/europe-drafts-postwar-plan-to-free-up-hormuz-without-u-s-5638f5f8" target="_blank">an international coalition</a> to help secure the Strait of Hormuz—but only after the fighting ended.</p><p>“We agree to disagree,” Jetten told reporters afterward. The meal “was too short to convince each other, but long enough to get a better understanding of each other’s positions.”</p><p>The dinner laid bare the conundrum before Trump as he tries to ratchet up economic pressure on Iran, even as he declared that the war is “very close to over.” While Trump said that he would be announcing “other countries” that will be involved with the blockade, none have stepped forward, and many have outright refused. Days later, the promised list of participating countries hasn’t materialized.</p><p>“The blockade is being implemented perfectly without the help of other countries because we have the strongest Navy in the world, and Iran’s Navy is in the bottom of the sea,” said White House press secretary Karoline Leavitt. </p><div><figure><picture><img currentsourceurl="https://images.wsj.net/im-75524669?width=540&amp;size=1.501" alt="US President Donald Trump walking on a red carpet with a marine saluting." loading="lazy" sizes="(max-width: 639px) 100vw, (max-width: 979px) 620px, (max-width: 1299px) 540px, 700px" src="https://d634q04nmi6qfz.archive.ph/8bwdw/4a5705c8819f2e36b04678f321eca0cd36514fb9.avif"></picture></figure><figcaption><span>President Trump is working to raise the economic pressure on Iran.</span> <span>Salwan Georges/Press POOL</span></figcaption></div><p>This week, Trump told the New York Post that U.S. officials could return to Pakistan immediately to resume talks with the Iranians, but so far no plans had been set. When talks took place last weekend, Trump said they were irrelevant because the U.S. already had won the war. </p><p>Trump wants Iran to turn over its enriched uranium and commit to at least a 20-year freeze on enrichment. Iran countered by offering a five-year freeze but wants to keep enriched uranium inside the country.</p><p>“I view it as very close to over,” Trump told Fox Business channel’s Maria Bartiromo in an interview that aired Wednesday. “If I pulled up stakes right now, it would take them 20 years to rebuild their country. And we’re not finished. We’ll see what happens. I think they want to make a deal very badly.”</p><p>While Trump says the war will end soon, some officials and analysts estimate it could take months or longer for the Iranian regime to feel enough economic pain from the blockade to yield in the negotiations. </p><p>Trump has told aides he is comfortable with keeping the blockade in place for as long as it takes, but he also says he thinks Iran is close to making a deal.</p><p>A senior U.S. military official said the U.S. Navy could sustain the blockade indefinitely. However, there are concerns in the Pentagon that a prolonged blockade would strain American warships and weaken the U.S. presence in other regions where American naval power is in demand, such as the Pacific. More than 10,000 U.S. sailors, Marines and airmen are involved in the mission, as well as more than a dozen warships and aircraft, according to U.S. Central Command.</p><div><figure><picture><img currentsourceurl="https://images.wsj.net/im-05050928?width=540&amp;size=1.501" alt="The USS McFaul destroyer approaches the USNS Henry J. Kaiser oiler for replenishment-at-sea." loading="lazy" sizes="(max-width: 639px) 100vw, (max-width: 979px) 620px, (max-width: 1299px) 540px, 700px" src="https://d634q04nmi6qfz.archive.ph/8bwdw/70f1febcac45520c602f4ff9c8e4ef4b6f0fd6d4.avif"></picture></figure><figcaption><span>U.S. Navy ships in service during the Iran war. </span> <span>U.S. Navy</span></figcaption></div><p>Administration officials said Vice President JD Vance, who led the first round of failed negotiations with Iran, is on standby to travel again to Pakistan this week for more talks with Iran if the administration thinks it could make headway, though no decision has been made. Vance would be joined at the talks for the second time with special envoy Steve Witkoff and Jared Kushner, the president’s son-in-law, officials said. </p><p>Trump has at least two major red lines in negotiations, the officials said. The first is forcing Iran to freeze enrichment for at least 20 years, though he wants to push for longer. The second is the removal of enriched uranium from Iranian soil. Iran has yet to bow to the demands and has a decadeslong history of enduring U.S. economic-pressure campaigns aimed at halting its nuclear program and support for terror networks throughout the Middle East.</p><p>U.S. approaches “based on threats, pressure and military action” will only make matters worse, Iranian President Masoud Pezeshkian said Tuesday. He added that Tehran would only continue talks if “they protect the rights of the Iranian people.”</p><p>The peace talks in Pakistan ended with no breakthroughs. Officials and analysts said both countries outlined demands that would be nonstarters for the other side. </p><p>“The two sides are still really far apart in negotiations,” said Matthew Kroenig, a former Pentagon official at the Atlantic Council, a Washington-based think tank. “The blockade will start to bite, but I think we’ll need to let the pressure build for a bit before Iran is willing to negotiate in earnest.”</p><p>Some U.S. officials with extensive Middle East experience estimated that the current Iranian government is unlikely to give up its nuclear ambitions—even if it risks bringing the country to economic ruin. They also noted that after the U.S. and Israeli bombing campaign killed many senior Iranian leaders, the <a href="https://archive.ph/o/8bwdw/https://www.wsj.com/world/middle-east/iran-radical-regime-change-a42d96ea" target="_blank">void is being filled</a> by other regime hard-liners considered even more radical and who have shown little interest in compromise. </p><div><figure><picture><img currentsourceurl="https://images.wsj.net/im-25306745?width=540&amp;size=1.495" alt="Vice President JD Vance speaking at a news conference in Islamabad." loading="lazy" sizes="(max-width: 639px) 100vw, (max-width: 979px) 620px, (max-width: 1299px) 540px, 700px" src="https://d634q04nmi6qfz.archive.ph/8bwdw/5b9fa87b53643e7b5a371343d9e1ae573d5db323.avif"></picture></figure><figcaption><span>Vice President JD Vance is on standby to again travel to Pakistan for more talks on the Iran war.</span> <span>Jacquelyn Martin/Press Pool</span></figcaption></div><p>But senior Trump administration officials disagree, contending that Iran’s economy had been crippled by decades of sanctions and systemic corruption even before the war and new U.S. blockade. Trump officials also said outside powers, such as China and Pakistan, are pushing Tehran to make a deal that would end the war and ease pressure on global energy markets roiled by Iran’s decision to close the Strait of Hormuz to most commercial trade. </p><p>Still, Trump faces pressures of his own. A vocal wing of the Republican party has bristled at the prospect of another costly war in the Middle East, and Trump’s Republican allies on Capitol Hill privately fret that the war and knock-on effects on gas prices and inflation at home could cost the GOP in the midterm elections. </p><p>Saudi Arabia, a key U.S. ally in the region, is pressing the U.S. to drop the blockade over fears Iran could activate proxy militant groups in Yemen to attack maritime trade in the Red Sea and shut down yet another vital artery in global energy trade. </p><p>Speaking to a conservative-youth event Tuesday in Georgia, Vance said that the deep mistrust between the U.S. and Iran remained a major obstacle. “You’re not going to solve that problem overnight,” he said. </p><p>“I think the people we are sitting across from wanted to make a deal and I know the president of the United States told us to go out there and negotiate in good faith. That’s what we did, that’s what we’re going to keep on doing,” Vance said. “You never know, though.”</p></div></section><p>Copyright ©2026 Dow Jones &amp; Company, Inc. All Rights Reserved. 87990cbe856818d5eddac44c7b1cdeb8</p><p>Appeared in the April 16, 2026, print edition as 'President Aims to Force Quick Iran Deal'.</p><div><article><div><p><a href="https://archive.ph/o/8bwdw/https://www.wsj.com/news/author/robbie-gramer" target="_blank">Robbie Gramer</a> is a national security reporter at The Wall Street Journal in Washington. He previously worked at Politico, where he was a reporter and the lead author of the newsletter NatSec Daily. Robbie has reported from over two dozen countries across Europe, Asia, South America and the Middle East. He has reported from the halls of Congress, remote research stations in the Amazon rainforest and aboard Norwegian coast guard cutters high in the Arctic Circle. He was also the host of Foreign Policy magazine’s award-winning podcast, “After Hotel Rwanda,” about the kidnapping of a Rwandan human-rights activist and U.S.-led efforts to free him.</p><p>Before his career in journalism, Robbie was associate director of transatlantic security at the Atlantic Council, a Washington-based think tank. Robbie graduated from American University with a degree in international relations.</p></div></article><article><div><p><a href="https://archive.ph/o/8bwdw/https://www.wsj.com/news/author/vera-bergengruen" target="_blank">Vera Bergengruen</a> is a national security reporter at The Wall Street Journal in Washington, D.C.&nbsp; Before joining the Journal, she was a senior correspondent at Time magazine, where she covered the intersection of national security, tech and politics and reported cover stories from Ukraine, Argentina and El Salvador. </p><p>Previously she worked as a national security and investigative reporter for BuzzFeed News. She began her journalism career at her hometown Miami Herald and its parent company McClatchy, where she did stints covering everything from hurricanes to Congress, the Defense Department and the White House.&nbsp;</p><p>Her work has won the Society of Professional Journalists' Sigma Delta Chi and Dateline Awards and a New York Press Club Award. She was also part of the team that worked on the Pulitzer Prize-winning Panama Papers investigation in 2017. Vera is originally from Uruguay and grew up in Chile, Germany, Mexico and Miami.</p></div></article><article><div><p><a href="https://archive.ph/o/8bwdw/https://www.wsj.com/news/author/meridith-mcgraw" target="_blank">Meridith McGraw</a> is a reporter covering the White House for The Wall Street Journal in Washington. She joined the Journal from Politico, where she was national political correspondent and covered the 2024 presidential election. She started at Politico in 2019 as a White House reporter.</p><p>Meridith is the author of "Trump in Exile," which chronicled Donald Trump's postpresidency after he lost the 2020 election.</p><p>Previously, Meridith was a White House reporter and producer for ABC News. Meridith graduated from the University of Texas at Austin, and holds a master’s degree from Columbia University Graduate School of Journalism. She grew up in West Virginia.</p></div></article></div></div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+<style id="note-styling">
+    .note {
+      position: absolute;
+      z-index: 10;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: inherit;
+      padding: 5px;
+      min-width: 32px;
+      min-height: 32px;
+    }
+    .note:focus {
+      z-index: 11;
+    }
+    .note[type="0"] {
+      background-color: #fff740;
+      color: #2c2c2d;
+    }
+    .note[type="0"]::placeholder {
+      color: #868226;
+    }
+    .note[type="1"] {
+      background-color: #feff9c;
+      color: #2c2c2d;
+    }
+    .note[type="1"]::placeholder {
+      color: #6d6d3d;
+    }
+    .note[type="2"] {
+      background-color: #ff65a3;
+      color: #2c2c2d;
+    }
+    .note[type="2"]::placeholder {
+      color: #65263f;
+    }
+    .note[type="3"] {
+      background-color: #ff7eb9;
+      color: #2c2c2d;
+    }
+    .note[type="3"]::placeholder {
+      color: #562b3f;
+    }
+    .note[type="4"] {
+      background-color: #7afcff;
+      color: #295c5d;
+    }
+    .note[type="4"]::placeholder {
+      color: #377677;
+    }</style></body><style>body {
+      font-size:  15px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: min(100% - 2rem, 600px);
+    }
+    p {
+      text-align: justify
+    }
+    .page {
+      line-height: 22.5px;
+      column-count: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
