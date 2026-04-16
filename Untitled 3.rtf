@@ -1,0 +1,22 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2867
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww12580\viewh16040\viewkind1
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 # Configuration\
+repo_url <- "https://sethackerman.github.io/host/"\
+repo_path <- "~/Documents/GitHub/host" # Path to your local repo\
+\
+# Get all files in the directory, excluding hidden ones and the README itself\
+files <- list.files(repo_path, recursive = TRUE)\
+files <- files[!files %in% c("README.md", "update_readme.R", "sync_github.sh", "index.html")]\
+files <- files[!grepl("^\\\\.", files)] # Exclude hidden files like .DS_Store\
+\
+# Generate Markdown lines\
+links <- paste0("* [", files, "](", repo_url, files, ")")\
+\
+# Write the README\
+header <- "# My Hosted Files\\n\\nThis list is automatically updated.\\n\\n"\
+writeLines(c(header, links), file.path(repo_path, "README.md"))}
